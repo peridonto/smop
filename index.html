@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>すもっぷ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- サマリー（上部） -->
+        <header class="summary-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h1>🚭 すもっぷ</h1>
+                <button id="open-setup-btn" class="btn-icon">⚙️</button>
+            </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="label">禁煙日数</span>
+                    <span class="value" id="days-count">0</span><span class="unit">日目</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">浮いたお金</span>
+                    <span class="value" id="saved-money">¥0</span>
+                </div>
+            </div>
+            <button id="reset-btn" class="btn-danger">最初からやり直す(リセット)</button>
+        </header>
+
+        <!-- カレンダー（下部） -->
+        <main class="calendar-container">
+            <div class="calendar-header">
+                <button id="prev-month">◀</button>
+                <h2 id="current-month-year">2026年 10月</h2>
+                <button id="next-month">▶</button>
+            </div>
+            <div class="calendar-grid" id="calendar-body">
+                <!-- JavaScriptでカレンダーが生成されます -->
+            </div>
+        </main>
+
+        <!-- 記録入力モーダル -->
+        <div id="record-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3 id="modal-date-title">日付の記録</h3>
+                <div class="input-group">
+                    <label>紙たばこ (本)</label>
+                    <input type="number" id="paper-count" min="0" value="0">
+                </div>
+                <div class="input-group">
+                    <label>電子たばこ (本)</label>
+                    <input type="number" id="vape-count" min="0" value="0">
+                </div>
+                <div class="modal-actions">
+                    <button id="save-record-btn" class="btn-primary">保存する</button>
+                    <button id="close-modal-btn" class="btn-secondary">キャンセル</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 初期設定モーダル -->
+        <div id="setup-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>初期設定</h3>
+                <p style="font-size: 0.85em; line-height: 1.4; margin-bottom: 15px; color: #555;">
+                    禁煙前のたばこの値段・1日に吸っていた本数を記入してください。電子たばこを0本とする際にも、値段を記入してください。禁煙中に浮いたたばこ代の計算に使われます
+                </p>
+                <label>禁煙開始日</label>
+                <input type="date" id="start-date">
+                <label>紙たばこ (1本あたりの値段)</label>
+                <input type="number" id="pre-paper-price" placeholder="例: 30">
+                <label>紙たばこ (1日の喫煙本数)</label>
+                <input type="number" id="pre-paper-count" placeholder="例: 10">
+                <label>電子たばこ (1本/1回あたりの値段)</label>
+                <input type="number" id="pre-vape-price" placeholder="例: 30">
+                <label>電子たばこ (1日の喫煙本数)</label>
+                <input type="number" id="pre-vape-count" placeholder="例: 10">
+                
+                <button id="save-setup-btn" class="btn-primary" style="margin-top: 15px;">設定完了</button>
+                <button id="close-setup-btn" class="btn-secondary" style="margin-top: 10px;">キャンセル</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
